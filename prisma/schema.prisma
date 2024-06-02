@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PartnerEnum {
+  TrafficLight
+  DrCash
+}
+
+model Stream {
+  id    Int     @default(autoincrement()) @id
+  partner PartnerEnum @default(TrafficLight)
+  apiToken String
+  streamId String
+  offerId String
+  name  String?
+  leads Lead[]
+}
+
+model Lead {
+  id    Int     @default(autoincrement()) @id
+  stream   Stream @relation(fields: [streamId], references: [id])
+  streamId Int
+  name  String
+  phone String
+  ip String
+  userAgent String
+  country String
+  subId String
+  email String?
+  address String?
+  tz String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
