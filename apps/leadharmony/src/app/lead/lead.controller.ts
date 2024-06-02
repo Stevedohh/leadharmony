@@ -22,17 +22,7 @@ export class LeadController {
         ip: { type: 'string', example: '192.168.1.1' },
         userAgent: { type: 'string', example: 'Mozilla/5.0' },
         country: { type: 'string', example: 'USA' },
-        email: { type: 'string', example: 'john.doe@example.com', nullable: true },
-        address: { type: 'string', example: '123 Main St', nullable: true },
-        tz: { type: 'string', example: 'America/New_York', nullable: true },
-        createdAt: { type: 'string', example: '2022-01-01T00:00:00Z', nullable: true },
-        updatedAt: { type: 'string', example: '2022-01-01T00:00:00Z', nullable: true },
-        stream: {
-          type: 'object',
-          properties: {
-            streamId: { type: 'string', example: 'your-stream-id' }
-          }
-        }
+        streamId: { type: 'string', example: 'your-stream-id' }
       },
     },
   })

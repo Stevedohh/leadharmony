@@ -24,6 +24,7 @@ model Stream {
   apiToken String
   streamId String
   offerId String
+  slackChannelId String?
   name  String?
   leads Lead[]
 }

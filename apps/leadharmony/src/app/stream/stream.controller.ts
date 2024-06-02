@@ -38,20 +38,20 @@ export class StreamController {
   @ApiOperation({ summary: 'Get a stream by id' })
   @ApiParam({ name: 'id', required: true, description: 'The id of the stream' })
   async getStreamById(@Param('id') id: number) {
-    return this._streamService.getStreamById(id);
+    return this._streamService.getStreamById(Number(id));
   }
 
   @Put(':id')
   @ApiOperation({ summary: 'Update a stream by id' })
   @ApiParam({ name: 'id', required: true, description: 'The id of the stream' })
   async updateStream(@Param('id') id: number, @Body() data: Prisma.StreamUpdateInput) {
-    return this._streamService.updateStream(id, data);
+    return this._streamService.updateStream(Number(id), data);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a stream by id' })
   @ApiParam({ name: 'id', required: true, description: 'The id of the stream' })
   async deleteStream(@Param('id') id: number) {
-    return this._streamService.deleteStream(id);
+    return this._streamService.deleteStream(Number(id));
   }
 }
