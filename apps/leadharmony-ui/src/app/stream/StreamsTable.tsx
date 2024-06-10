@@ -12,7 +12,7 @@ import {
   TableRow,
   useDisclosure
 } from '@nextui-org/react';
-import { DeleteIcon, EditIcon, Pencil, Trash2 } from 'lucide-react';
+import { Pencil, Trash2 } from 'lucide-react';
 import { StreamModal } from './StreamModal';
 import { deferUntilNextTick } from '@leadharmony/ui-utils';
 import { config } from '../config';
@@ -68,7 +68,7 @@ export const StreamsTable = () => {
 
   const queryClient = useQueryClient();
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading} = useQuery({
     queryKey: [ 'streams' ],
     queryFn: () => axios.get<Stream[]>(`${ config.apiUrl }/stream`).then((res) => res.data)
   });
@@ -95,10 +95,6 @@ export const StreamsTable = () => {
 
   if (isLoading) {
     return <span>Loading...</span>;
-  }
-
-  if (isError) {
-    return <span>Error: { error.message }</span>;
   }
 
   const onEditClick = (stream: Stream) => {
