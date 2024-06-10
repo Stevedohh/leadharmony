@@ -4,7 +4,10 @@
   "license": "MIT",
   "scripts": {
     "start:api": "npx nx serve leadharmony",
-    "start:ui": "npx nx serve leadharmony-ui"
+    "start:ui": "npx nx serve leadharmony-ui",
+    "build": "nx run-many --target=build --all",
+    "build:ui": "nx build leadharmony-ui",
+    "build:api": "nx build leadharmony"
   },
   "private": true,
   "dependencies": {
