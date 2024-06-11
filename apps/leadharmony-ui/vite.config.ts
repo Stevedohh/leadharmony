@@ -8,7 +8,7 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/leadharmony-ui',
 
   server: {
-    port: 4200,
+    port: 3001,
     host: 'localhost'
   },
 

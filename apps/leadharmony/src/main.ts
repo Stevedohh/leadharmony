@@ -28,10 +28,14 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3000;
   app.enableCors({
-    origin: '*',
+    origin: [
+      'http://localhost:3001',
+      'https://stevedoh.com',
+      'https://www.stevedoh.com'
+    ]
   });
   await app.listen(port);
-  Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
+  Logger.log(`🚀 Application is running on: http://localhost:${ port }/${ globalPrefix }`);
 }
 
 bootstrap();
