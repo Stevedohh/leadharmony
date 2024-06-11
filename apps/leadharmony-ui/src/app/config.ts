@@ -3,5 +3,5 @@ type Config = {
 }
 
 export const config: Config = {
-  apiUrl: 'https://stevedoh.com:3000/api'
+  apiUrl: 'https://stevedoh.com/api'
 }

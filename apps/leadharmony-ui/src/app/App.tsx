@@ -26,6 +26,7 @@ export const App = () => {
 
   return (
     <div className="h-screen flex flex-col gap-5 max-w-[1200px] pt-5 ml-auto mr-auto">
+      <h1 className="text-3xl font-bold">Streams</h1>
       <div className="ml-auto">
         <Button onPress={ onOpen } color="default" variant="ghost">
           Create Stream

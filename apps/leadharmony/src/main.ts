@@ -30,8 +30,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:3001',
-      'https://stevedoh.com',
-      'https://www.stevedoh.com'
+      'https://stevedoh.com'
     ]
   });
   await app.listen(port);
