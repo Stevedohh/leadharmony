@@ -20,6 +20,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            source ~/.nvm/nvm.sh
+            nvm use 18
             cd ~/leadharmony/
             echo "${{ secrets.BE_ENV_FILE }}" > .env
             git pull origin main
