@@ -8,16 +8,28 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/leadharmony-ui',
 
   server: {
+    proxy: {
+      '/': {
+        secure: false,
+        prependPath: true
+      }
+    },
     port: 4200,
-    host: 'localhost',
+    host: 'localhost'
   },
 
   preview: {
+    proxy: {
+      '/': {
+        secure: false,
+        prependPath: true
+      }
+    },
     port: 4200,
-    host: 'localhost',
+    host: 'localhost'
   },
 
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [ react(), nxViteTsPaths() ],
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -29,7 +41,7 @@ export default defineConfig({
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
-      transformMixedEsModules: true,
-    },
-  },
+      transformMixedEsModules: true
+    }
+  }
 });
