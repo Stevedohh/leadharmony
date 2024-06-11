@@ -6,7 +6,7 @@
     "start:dev:api": "npx nx serve leadharmony",
     "start:dev:ui": "npx nx serve leadharmony-ui",
     "start:prod:api": "node dist/apps/leadharmony/main.js",
-    "start:prod:ui": "nx run leadharmony-ui:serve-static",
+    "start:prod:ui": "nx run leadharmony-ui:preview",
     "build": "nx run-many --target=build --all",
     "build:ui": "nx build leadharmony-ui",
     "build:api": "nx build leadharmony",

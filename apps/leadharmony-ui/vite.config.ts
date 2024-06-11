@@ -8,23 +8,11 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/leadharmony-ui',
 
   server: {
-    proxy: {
-      '/': {
-        secure: false,
-        prependPath: true
-      }
-    },
     port: 4200,
     host: 'localhost'
   },
 
   preview: {
-    proxy: {
-      '/': {
-        secure: false,
-        prependPath: true
-      }
-    },
     port: 4200,
     host: 'localhost'
   },
@@ -37,6 +25,7 @@ export default defineConfig({
   // },
 
   build: {
+
     outDir: '../../dist/apps/leadharmony-ui',
     emptyOutDir: true,
     reportCompressedSize: true,
