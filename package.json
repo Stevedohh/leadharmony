@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:api": "npx nx serve leadharmony",
-    "start:ui": "npx nx serve leadharmony-ui",
+    "start:dev:api": "npx nx serve leadharmony",
+    "start:dev:ui": "npx nx serve leadharmony-ui",
+    "build-and-start:prod:ui": "nx run leadharmony-ui:serve-static",
+    "build-and-start:prod:api": "nx build leadharmony && node dist/apps/leadharmony/main.js",
     "build": "nx run-many --target=build --all",
     "build:ui": "nx build leadharmony-ui",
     "build:api": "nx build leadharmony",
