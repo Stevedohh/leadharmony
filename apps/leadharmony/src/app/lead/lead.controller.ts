@@ -7,12 +7,13 @@ import { LeadService } from './lead.service';
 @ApiTags('leads')
 @Controller('leads')
 export class LeadController {
-  constructor(private readonly _leadService: LeadService) {}
+  constructor(private readonly _leadService: LeadService) {
+  }
 
   @Post()
   @ApiOperation({ summary: 'Create lead' })
-  @ApiResponse({ status: 201, description: 'The lead has been successfully created.'})
-  @ApiResponse({ status: 400, description: 'Invalid input.'})
+  @ApiResponse({ status: 201, description: 'The lead has been successfully created.' })
+  @ApiResponse({ status: 400, description: 'Invalid input.' })
   @ApiBody({
     schema: {
       type: 'object',
@@ -23,10 +24,10 @@ export class LeadController {
         userAgent: { type: 'string', example: 'Mozilla/5.0' },
         country: { type: 'string', example: 'USA' },
         streamId: { type: 'string', example: 'your-stream-id' }
-      },
-    },
+      }
+    }
   })
-  create(@Body() createLeadDto: Prisma.LeadCreateInput) {
-    return this._leadService.createLead(createLeadDto);
+  async create(@Body() createLeadDto: Prisma.LeadCreateInput) {
+      return await this._leadService.createLead(createLeadDto);
   }
 }

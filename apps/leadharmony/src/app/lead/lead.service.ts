@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { Lead, Prisma, Stream } from '@prisma/client';
 
@@ -25,17 +25,17 @@ export class LeadService {
     if (existingLead) {
       await this._slackNotificationService.notifyLead(NotificationType.Duplicate, stream.slackChannelId, existingLead);
 
-      return;
+      throw new HttpException('Lead already exists', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     try {
       switch (stream.partner) {
         case PartnerEnum.TrafficLight: {
           const trafficLight = new TrafficLightPartner(this._httpService);
-          await trafficLight.sendLead(stream, lead);
+          const sendedLead = await trafficLight.sendLead(stream, lead);
           await this._slackNotificationService.notifyLead(NotificationType.Send, stream.slackChannelId, lead);
 
-          break;
+          return sendedLead.data;
         }
         default:
           break;
@@ -47,6 +47,8 @@ export class LeadService {
         responseData: error.response.data,
         payload: data
       });
+
+      throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }
