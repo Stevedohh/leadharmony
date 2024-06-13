@@ -28,6 +28,8 @@ export class LeadController {
     }
   })
   async create(@Body() createLeadDto: Prisma.LeadCreateInput) {
-      return await this._leadService.createLead(createLeadDto);
+    console.log(createLeadDto);
+
+    return await this._leadService.createLead(createLeadDto);
   }
 }
