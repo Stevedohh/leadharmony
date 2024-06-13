@@ -35,7 +35,7 @@ export class LeadService {
           const sendedLead = await trafficLight.sendLead(stream, lead);
           await this._slackNotificationService.notifyLead(NotificationType.Send, stream.slackChannelId, lead);
 
-          return sendedLead.data;
+          return { ...sendedLead.data, statusCode: HttpStatus.CREATED };
         }
         default:
           break;
