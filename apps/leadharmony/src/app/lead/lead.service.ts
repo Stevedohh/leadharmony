@@ -25,7 +25,7 @@ export class LeadService {
     if (existingLead) {
       await this._slackNotificationService.notifyLead(NotificationType.Duplicate, stream.slackChannelId, existingLead);
 
-      throw new HttpException('Lead already exists', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new HttpException('Lead already exists', HttpStatus.CONFLICT);
     }
 
     try {
